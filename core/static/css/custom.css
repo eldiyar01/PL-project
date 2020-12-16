@@ -1,0 +1,52 @@
+@font-face {
+    font-family: 'ISOCT';
+    src: url('../fonts/ISOCT.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'AzoteW00';
+    src: url('../fonts/AzoteW00-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+.isoct {
+    font-family: 'ISOCT';
+    font-weight: normal;
+    font-style: normal;
+}
+
+.azote {
+    font-family: 'AzoteW00';
+    font-weight: normal;
+    font-style: normal;
+    src: url('AzoteW00-Regular.ttf') format('truetype');
+}
+
+.rect {
+    font-family: 'rect';
+    font-weight: normal;
+    font-style: normal;
+}
+
+.mh-29{
+    max-height:290px;
+}
+
+.mb-30{
+    margin-bottom:300px;
+}
+
+.bg-dark-m{
+    background-color:#0d1117;
+}
+
+.bg-dark2-m{
+    background-color:#161b22;
+}
+
+
