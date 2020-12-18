@@ -10,7 +10,8 @@
     <link href="{% static 'css/icons.css' %}" rel="stylesheet" type="text/css" media="all" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script type="text/javascript" src="{% static 'js/bootstrap.js' %}"> </script>
+    <script type="text/javascript" src="{% static 'js/bootstrap.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/txt_typer.js' %}"></script>
 </head>
 <body class="bg-dark-m">
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark2-m">
@@ -63,6 +64,27 @@
         </div>
     </div>
 </div>
+{% block main %}
+<div class="container-fluid mb-5">
+    <div class="row">
+        <div class="col-lg-6 pl-5">
+            <div class="mb-5 h-200">
+                <h1 class="display-4 isoct font-weight-bold mt-4">
+                    <span class="text-white">With QZ you can</span>
+                    <span class="typewrite font-sp text-primary underline" data-period="3000"
+                          data-type='[ "create a new community.", "find friends.", "improve your skills."]'>
+                    </span>
+                </h1>
+            </div>
+            <h5 class="isoct text-white mb-3">QZ will help you find/create university or non-university clubs</h5>
+            <a class="btn btn-primary btn-wide transition-3d-hover" href="./page-login-simple.html">Get Started</a>
+            <a class="btn btn-link btn-wide" href="#">Learn More <i class="fas fa-angle-right fa-sm ml-1"></i></a>
+        </div>
+        <div class="col-lg-6">
+        </div>
+    </div>
+</div>
+{% endblock %}
 {% block content %}
 {% endblock %}
 <footer class="container py-5">

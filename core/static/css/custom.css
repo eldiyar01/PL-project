@@ -33,8 +33,20 @@
     font-style: normal;
 }
 
+.font-sp{
+    letter-spacing: -10px;
+}
+
 .mh-29{
     max-height:290px;
+}
+
+.h-200{
+    min-height: 202px
+}
+
+.mt-30{
+    margin-top:300px;
 }
 
 .mb-30{
@@ -49,4 +61,8 @@
     background-color:#161b22;
 }
 
+.underline{
+    border-bottom: 6px solid #26609dc2;
+    padding-bottom:3px;
+}
 
