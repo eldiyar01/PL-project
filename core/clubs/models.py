@@ -10,6 +10,10 @@ def upload_club_img(instance, filename):
     return 'club_img/{0}/{1}'.format(instance.club.title, filename)
 
 
+def upload_project_img(instance, filename):
+    return 'club_img/{0}/{1}/{2}'.format(instance.project.club.title, instance.project.title, filename)
+
+
 class University(models.Model):
     UNIVERSITIES = (
         ('AIU', 'AlaToo'),
@@ -39,17 +43,26 @@ class Club(models.Model):
     contacts = models.TextField()
 
     def get_absolute_url(self):
-        return reverse('clubs:club_details', kwargs={'pk':self.pk})
+        return reverse('clubs:club_details', kwargs={'pk': self.pk})
 
 
 class Project(models.Model):
     club = models.ForeignKey(Club, models.CASCADE, related_name='projects')
     title = models.CharField(max_length=200)
     description = models.TextField()
-    start_date = models.DateField(auto_now=True)
-    end_date = models.DateField
+    author = models.TextField(default='students')
+    start_date = models.DateField(null=True, blank=True)
+    end_date = models.DateField(null=True, blank=True)
+
+    def get_absolute_url(self):
+        return reverse('clubs:project_details', kwargs={'pk': self.pk})
 
 
 class Gallery(models.Model):
     club = models.ForeignKey(Club, on_delete=models.CASCADE, related_name='gallery')
     image = models.ImageField(upload_to=upload_club_img)
+
+
+class ProjectGallery(models.Model):
+    project = models.ForeignKey(Project, on_delete=models.CASCADE, related_name='gallery')
+    image = models.ImageField(upload_to=upload_project_img)
