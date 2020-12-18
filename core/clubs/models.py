@@ -54,6 +54,9 @@ class Project(models.Model):
     start_date = models.DateField(null=True, blank=True)
     end_date = models.DateField(null=True, blank=True)
 
+    def get_absolute_url(self):
+        return reverse('clubs:project_details', kwargs={'pk': self.pk})
+
 
 class Gallery(models.Model):
     club = models.ForeignKey(Club, on_delete=models.CASCADE, related_name='gallery')
