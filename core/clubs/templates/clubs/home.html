@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div id="carousel" class="carousel slide  mb-30" data-interval="false" data-ride="carousel">
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <hr class="border-dark">
+            <h1 class="isoct font-weight-bold text-white text-center">All universities</h1>
+            <hr class="border-dark">
+            <div class="container mt-5">
+                <div class="row">
+                    {% for university in universities %}
+                    <div class="col-6">
+                        <div class="card mt-2 border-dark bg-transparent">
+                            <div class="row no-gutters">
+                                <div class="col-md-4">
+                                    <img src="{{ university.image.url }}" class="card-img rounded-circle" height="170px" alt="...">
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="card-body">
+                                        <p class="card-title h3 isoct text-white">{{ university.title }}</p>
+                                        <p class="card-text rect text-muted">{{ university.get_title_display }}</p>
+                                        <p class="card-text rect text-muted">
+                                            number of courses: {{ university.univ_club.all|length }}
+                                        </p>
+                                        <p class="card-text"><small class="text-muted"></small></p>
+                                    </div>
+                                </div>
+                                <div class="col-12 mt-3 mb-9">
+                                    <button class="btn btn-outline-primary rounded-0 btn-lg btn-block" data-toggle="collapse"
+                                            data-target="#cl-clubs{{ university.id }}"
+                                            aria-expanded="false" aria-controls="cl-clubs{{ university.id }}">
+                                          View
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                    {% for university in universities %}
+                    <div class="col-6 pt-4">
+                        <div class="collapse border border-dark rounded" id="cl-clubs{{ university.id }}">
+                        {% for club in university.univ_club.all %}
+                            <a href="{{ club.get_absolute_url }}" class="m-0"><p class="pl-3 mb-0 pt-3">{{ club.title }}</p></a>
+                            <small class="pl-3 text-muted">{{ club.faculty }}</small>
+                            <hr class="border-dark ml-3 mr-3">
+                        {% endfor %}
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <hr class="border-dark">
+            <h1 class="isoct font-weight-bold text-white text-center">All clubs</h1>
+            <hr class="border-dark">
+            <div class="container mt-5">
+                <div class="row row-cols-1 row-cols-md-2">
+                    {% for club in clubs %}
+                    <div class="col mb-4">
+                        <div class="card border-dark bg-transparent">
+                          <img src="{{ club.gallery.first.image.url }}" class="card-img-top" alt="...">
+                          <div class="card-body">
+                            <h4 class="card-title isoct text-white">{{ club.title }}</h4>
+                            <p class="card-text rect text-muted">{{ club.get_type_display }}</p>
+                            <p class="card-text rect text-muted">
+                                University: {{  club.univ_club.title }} ({{ club.univ_club.get_title_display }})
+                            </p>
+                            <p class="card-text rect text-muted">Faculty: {{ club.faculty }}</p>
+                          </div>
+                              <div class="card-footer">
+                            <small class="text-muted card-text">Date started: {{ club.date }}</small>
+                              </div>
+                        </div>
+                      </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <a class="carousel-control-prev sticky-top float-left pt-5" href="#carousel" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next sticky-top float-right  pt-5" href="#carousel" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+</div>
+{% endblock %}
