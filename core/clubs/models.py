@@ -15,13 +15,8 @@ def upload_project_img(instance, filename):
 
 
 class University(models.Model):
-    UNIVERSITIES = (
-        ('AIU', 'AlaToo'),
-        ('KTU', 'Manas'),
-        ('AUCA', 'AUCA'),
-        ('INDPT', 'Independent')
-    )
-    title = models.CharField(max_length=5, choices=UNIVERSITIES)
+    abbreviation = models.CharField(max_length=10, default='Univer')
+    title = models.CharField(max_length=200)
     image = models.ImageField(upload_to=upload_img)
 
 
@@ -33,6 +28,7 @@ class Club(models.Model):
         ('EM', 'Entertainment and Media'),
         ('SD', 'Sports and Dancing'),
         ('CH', 'Charity'),
+        ('OT', 'Other')
     )
     university = models.ForeignKey(University, models.CASCADE, related_name='univ_club')
     faculty = models.CharField(max_length=200)

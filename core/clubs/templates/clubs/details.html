@@ -1,5 +1,4 @@
 {% extends 'base.html' %}
-{% load static %}
 
 {% block main %}
 {% endblock %}
@@ -16,7 +15,7 @@
                                 <h2 class="isoct text-white font-weight-bold">{{ club.title }}</h2>
                                 <div class="rect text-white font-weight-bold">
                                     <h4 class="mb-0">
-                                        {{ club.university.get_title_display }}:{{ club.faculty }}
+                                        {{ club.university.title }}:{{ club.faculty }}
                                     </h4>
                                     <span class="h5 mb-0">{{ club.get_type_display }}</span>
                                 </div>
@@ -29,7 +28,7 @@
                                 <h2 class="isoct text-white font-weight-bold">{{ club.title }}</h2>
                                 <div class="rect text-white font-weight-bold">
                                     <h4 class="mb-0">
-                                        {{ club.university.get_title_display }}:{{ club.faculty }}
+                                        {{ club.university.title }}:{{ club.faculty }}
                                     </h4>
                                     <span class="h5 mb-0">{{ club.get_type_display }}</span>
                                 </div>
@@ -58,7 +57,7 @@
                 <h5 class="isoct font-weight-bold text-white">
                     University:
                     <span class="text-muted">
-                        {{ club.university.title }} ({{ club.university.get_title_display }})
+                        {{ club.university.abbreviation }} ({{ club.university.title }})
                     </span>
                 </h5>
                 <h5 class="isoct font-weight-bold text-white">
