@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block main %}
+{% endblock %}
+
+{% block content %}
+
+<div class="container mb-5 mt-5">
+    <div class="row">
+        <div class="col-12 text-center">
+            <hr class="border-dark">
+            <h1 class="isoct text-white font-weight-bold mb-0">Our team</h1>
+            <h5 class="text-muted">Project by:</h5>
+            <hr class="border-dark">
+        </div>
+        <div class="col-12">
+            <div class="col-6 mb-5 mt-5">
+                <div class="card border-dark bg-transparent">
+                    <img src="{% static 'imgs/team/eldiiar.jpg' %}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <a href="{{ club.get_absolute_url }}" class="card-title isoct text-white">
+                            <h4>Eldiiar Abdyldaev</h4>
+                        </a>
+                        <p class="card-text rect text-muted">
+                            University: AIU (Ala-Too})
+                        </p>
+                        <p class="card-text rect text-muted">Faculty: Computer Science</p>
+                        <p class="card-text rect text-muted">Pretty simple boy</p>
+                    </div>
+                    <div class="card-footer">
+                        <small class="text-muted card-text">Life is like chess, I don't know how to play chess
+                            <br>
+                            <cite class="float-right">Maybe it's me</cite></small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
