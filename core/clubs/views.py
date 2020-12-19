@@ -32,3 +32,11 @@ def searcher(request):
     elif rad == 'club':
         c_results = Club.objects.filter(title__icontains=inp)
     return render(request, 'clubs/search.html', {'input': inp, 'universities': u_results, 'clubs': c_results})
+
+
+def features(request):
+    return render(request, 'features/soon.html')
+
+
+def team(requeset):
+    return render(requeset, 'about/team.html')
