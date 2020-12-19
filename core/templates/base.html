@@ -15,13 +15,13 @@
 </head>
 <body class="bg-dark-m">
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark2-m">
-    <a class="navbar-brand isoct font-weight-bold " href="#">Navbar</a>
+    <a class="navbar-brand isoct font-weight-bold " href="{% url 'clubs:home' %}">Fanat</a>
     <button class="navbar-toggler" type="button">
         <span class="navbar-toggler-icon"></span>
     </button>
     <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-            <a class="nav-link isoct" href="#">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-link isoct" href="{% url 'clubs:home' %}">Home</a>
         </li>
     </ul>
     <button class="btn pb-0 btn-outline-primary" type="button"
@@ -40,18 +40,18 @@
                 </button>
             </div>
             <div class="col col-lg-8 mt-5">
-                <form class="">
+                <form class="" method="get" action="{% url 'clubs:searcher' %}">
                     <div class="input-group">
-                        <input class="form-control form-control-lg" type="text" placeholder="Search">
+                        <input class="form-control form-control-lg" name="search" type="text" placeholder="Search">
                         <div class="input-group-append">
-                            <button class="btn btn-outline-primary" type="button">Search</button>
+                            <button class="btn btn-outline-primary" type="submit">Search</button>
                         </div>
                     </div>
                     <br>
                     <div class="col-md-4 offset-md-4 text-white">
                         <div class="form-check form-check-inline ">
-                            <input class="form-check-input" type="radio" name="search_by" id="univer" value="univer">
-                            <label class="form-check-label" for="univer">University</label>
+                            <input class="form-check-input" type="radio" name="search_by" id="univ" value="univ">
+                            <label class="form-check-label" for="univ">University</label>
                         </div>
 
                         <div class="form-check form-check-inline">
@@ -70,15 +70,13 @@
         <div class="col-lg-6 pl-5">
             <div class="mb-5 h-200">
                 <h1 class="display-4 isoct font-weight-bold mt-4">
-                    <span class="text-white">With QZ you can</span>
+                    <span class="text-white">With Fanat you can</span>
                     <span class="typewrite font-sp text-primary underline" data-period="3000"
-                          data-type='[ "create a new community.", "find friends.", "improve your skills."]'>
+                          data-type='[ "create a new community.", "find friends.", "improve skills."]'>
                     </span>
                 </h1>
             </div>
-            <h5 class="isoct text-white mb-3">QZ will help you find/create university or non-university clubs</h5>
-            <a class="btn btn-primary btn-wide transition-3d-hover" href="./page-login-simple.html">Get Started</a>
-            <a class="btn btn-link btn-wide" href="#">Learn More <i class="fas fa-angle-right fa-sm ml-1"></i></a>
+            <h5 class="isoct text-white mb-3">Fanat will help you find/create university or non-university clubs</h5>
         </div>
         <div class="col-lg-6">
         </div>

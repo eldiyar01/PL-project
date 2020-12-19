@@ -1,5 +1,4 @@
 {% extends 'base.html' %}
-{% load static %}
 
 {% block content %}
 <div id="carousel" class="carousel slide  mb-30" data-interval="false" data-ride="carousel">
@@ -15,12 +14,12 @@
                         <div class="card mt-2 border-dark bg-transparent">
                             <div class="row no-gutters">
                                 <div class="col-md-4">
-                                    <img src="{{ university.image.url }}" class="card-img rounded-circle" height="170px" alt="...">
+                                    <img src="{{ university.image.url }}" class="card-img rounded-circle h-170" alt="">
                                 </div>
                                 <div class="col-md-8">
                                     <div class="card-body">
-                                        <p class="card-title h3 isoct text-white">{{ university.title }}</p>
-                                        <p class="card-text rect text-muted">{{ university.get_title_display }}</p>
+                                        <p class="card-title h3 isoct text-white">{{ university.abbreviation }}</p>
+                                        <p class="card-text rect text-muted">{{ university.title }}</p>
                                         <p class="card-text rect text-muted">
                                             number of courses: {{ university.univ_club.all|length }}
                                         </p>
@@ -28,8 +27,8 @@
                                     </div>
                                 </div>
                                 <div class="col-12 mt-3 mb-9">
-                                    <button class="btn btn-outline-primary rounded-0 btn-lg btn-block" data-toggle="collapse"
-                                            data-target="#cl-clubs{{ university.id }}"
+                                    <button class="btn btn-outline-primary rounded-0 btn-lg btn-block"
+                                            data-toggle="collapse" data-target="#cl-clubs{{ university.id }}"
                                             aria-expanded="false" aria-controls="cl-clubs{{ university.id }}">
                                           View
                                     </button>
@@ -42,7 +41,9 @@
                     <div class="col-6 pt-4">
                         <div class="collapse border border-dark rounded" id="cl-clubs{{ university.id }}">
                         {% for club in university.univ_club.all %}
-                            <a href="{{ club.get_absolute_url }}" class="m-0"><p class="pl-3 mb-0 pt-3">{{ club.title }}</p></a>
+                            <a href="{{ club.get_absolute_url }}" class="m-0">
+                                <p class="pl-3 mb-0 pt-3">{{ club.title }}</p>
+                            </a>
                             <small class="pl-3 text-muted">{{ club.faculty }}</small>
                             <hr class="border-dark ml-3 mr-3">
                         {% endfor %}
@@ -68,7 +69,7 @@
                                 </a>
                                 <p class="card-text rect text-muted">{{ club.get_type_display }}</p>
                                 <p class="card-text rect text-muted">
-                                    University: {{ club.university.title }} ({{ club.university.get_title_display }})
+                                    University: {{ club.university.abbreviation }} ({{ club.university.title }})
                                 </p>
                                 <p class="card-text rect text-muted">Faculty: {{ club.faculty }}</p>
                             </div>

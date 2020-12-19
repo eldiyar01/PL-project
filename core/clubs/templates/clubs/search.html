@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+
+{% block main %}
+{% endblock %}
+
+{% block content %}
+<div class="container mb-5 mt-5">
+    <div class="row">
+        <div class="col-12 text-center">
+            <h1 class="isoct text-white font-weight-bold mb-0">Results:</h1>
+            <h5 class="text-muted"> Of search: '{{ input }}'</h5>
+        </div>
+        {% if universities %}
+        <div class="col-12 mb-5 mt-5">
+            <hr class="border-dark">
+            <h1 class="isoct font-weight-bold text-white text-center">All universities</h1>
+            <hr class="border-dark">
+        </div>
+        <div class="col-12">
+            {% for university in universities %}
+            <div class="col-6">
+                <div class="card mt-2 border-dark bg-transparent">
+                    <div class="row no-gutters">
+                        <div class="col-md-4">
+                            <img src="{{ university.image.url }}" class="card-img rounded-circle h-170" alt="...">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <p class="card-title h3 isoct text-white">{{ university.abbreviation }}</p>
+                                <p class="card-text rect text-muted">{{ university.title }}</p>
+                                <p class="card-text rect text-muted">
+                                    number of courses: {{ university.univ_club.all|length }}
+                                </p>
+                                <p class="card-text"><small class="text-muted"></small></p>
+                            </div>
+                        </div>
+                        <div class="col-12 mt-3 mb-9">
+                            <button class="btn btn-outline-primary rounded-0 btn-lg btn-block" data-toggle="collapse"
+                                    data-target="#cl-clubs{{ university.id }}"
+                                    aria-expanded="false" aria-controls="cl-clubs{{ university.id }}">
+                                  View
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            {% for university in universities %}
+            <div class="col-6 pt-4">
+                <div class="collapse border border-dark rounded" id="cl-clubs{{ university.id }}">
+                {% for club in university.univ_club.all %}
+                    <a href="{{ club.get_absolute_url }}" class="m-0"><p class="pl-3 mb-0 pt-3">{{ club.title }}</p></a>
+                    <small class="pl-3 text-muted">{{ club.faculty }}</small>
+                    <hr class="border-dark ml-3 mr-3">
+                {% endfor %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% elif clubs %}
+        <div class="col-12 mb-5 mt-5">
+            <hr class="border-dark">
+            <h1 class="isoct font-weight-bold text-white text-center">All clubs</h1>
+            <hr class="border-dark">
+        </div>
+        {% for club in clubs %}
+        <div class="col-12">
+            <div class="col-6 mb-4">
+                <div class="card border-dark bg-transparent">
+                    <img src="{{ club.gallery.first.image.url }}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <a href="{{ club.get_absolute_url }}" class="card-title isoct text-white">
+                            <h4>{{ club.title }}</h4>
+                        </a>
+                        <p class="card-text rect text-muted">{{ club.get_type_display }}</p>
+                        <p class="card-text rect text-muted">
+                            University: {{ club.university.abbreviation }} ({{ club.university.title }})
+                        </p>
+                        <p class="card-text rect text-muted">Faculty: {{ club.faculty }}</p>
+                    </div>
+                    <div class="card-footer">
+                        <small class="text-muted card-text">Date started: {{ club.date }}</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+        {% else %}
+        <div class="col-12 mt-5 mb-5">
+            <hr class="border-dark">
+            <h3 class="isoct text-white font-weight bold">
+                Sorry, nothing was found, check the spelling or try to search for something else
+            </h3>
+            <hr class="border-dark">
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

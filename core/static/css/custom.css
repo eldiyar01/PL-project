@@ -37,7 +37,7 @@
 	text-shadow:6px 6px 9px #000;
 }
 
-.font-sp-10{
+.font-sp{
     letter-spacing: -10px;
 }
 
@@ -51,6 +51,9 @@
 
 .h-200{
     min-height: 202px
+}
+.h-170{
+    height: 170px
 }
 
 .mt-30{
