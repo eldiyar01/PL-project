@@ -20,6 +20,6 @@ source venv/bin.activate
 pip install -r requirements.txt
 python manage.py migrate
 
-5) run with manage.py
+5)run with manage.py
 python manage.py runserver
 
