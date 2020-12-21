@@ -1,4 +1,4 @@
-**Description: ** 
+**Description:** 
 A web app for universities clubs and their projects 
 
 **Team members:**  
@@ -11,8 +11,8 @@ https://youtu.be/afCU1CIXYHE
 https://drive.google.com/file/d/1wEFt5td6Fdy9aj5TRaO3-s9uk3_S-oeY/view?usp=sharing    
 https://drive.google.com/file/d/16vklcgypQQVdahqzTPkGClJXPLNKjg2C/view?usp=sharing  
 
-**Installing:**
-1)clone repository  
+**Installing:**  
+1)clone repository    
 https://github.com/eldiyar01/PL-project.git  
 
 2)create virtual environment  
