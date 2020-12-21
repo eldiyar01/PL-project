@@ -19,6 +19,9 @@ class University(models.Model):
     title = models.CharField(max_length=200)
     image = models.ImageField(upload_to=upload_img)
 
+    def __str__(self):
+        return f"({self.abbreviation}) {self.title}"
+
 
 class Club(models.Model):
     TYPES = (
@@ -38,6 +41,9 @@ class Club(models.Model):
     description = models.TextField()
     contacts = models.TextField()
 
+    def __str__(self):
+        return f"{self.university} - {self.faculty}, {self.title}"
+
     def get_absolute_url(self):
         return reverse('clubs:club_details', kwargs={'pk': self.pk})
 
@@ -50,6 +56,9 @@ class Project(models.Model):
     start_date = models.DateField(null=True, blank=True)
     end_date = models.DateField(null=True, blank=True)
 
+    def __str__(self):
+        return self.title
+
     def get_absolute_url(self):
         return reverse('clubs:project_details', kwargs={'pk': self.pk})
 
@@ -58,7 +67,13 @@ class Gallery(models.Model):
     club = models.ForeignKey(Club, on_delete=models.CASCADE, related_name='gallery')
     image = models.ImageField(upload_to=upload_club_img)
 
+    def __str__(self):
+        return self.club
+
 
 class ProjectGallery(models.Model):
     project = models.ForeignKey(Project, on_delete=models.CASCADE, related_name='gallery')
     image = models.ImageField(upload_to=upload_project_img)
+
+    def __str__(self):
+        return self.project
