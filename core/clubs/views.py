@@ -38,5 +38,5 @@ def features(request):
     return render(request, 'features/soon.html')
 
 
-def team(requeset):
-    return render(requeset, 'about/team.html')
+def team(request):
+    return render(request, 'about/team.html')

@@ -4,12 +4,15 @@ from .models import University, Club, Gallery, Project, ProjectGallery
 
 @admin.register(University)
 class UniversityAdmin(admin.ModelAdmin):
-    pass
+    ordering = ("abbreviation",)
+    search_fields = ("title__startswith",)
 
 
 @admin.register(Club)
 class ClubAdmin(admin.ModelAdmin):
-    pass
+    list_display = ("university", "title", "faculty", "type")
+    search_fields = ("title__startswith",)
+    list_filter = ("type", "university", "faculty", )
 
 
 @admin.register(Gallery)
@@ -19,9 +22,12 @@ class GalleryAdmin(admin.ModelAdmin):
 
 @admin.register(Project)
 class ProjectAdmin(admin.ModelAdmin):
-    pass
+    list_display = ("club", "title", "author", "start_date", "end_date")
+    search_fields = ("title__startswith",)
+    list_filter = ("club", "author", "start_date", "end_date")
 
 
 @admin.register(ProjectGallery)
 class ProjectGalleryAdmin(admin.ModelAdmin):
     pass
+
